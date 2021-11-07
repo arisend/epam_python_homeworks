@@ -20,7 +20,6 @@ parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -73,6 +72,7 @@ instance/
 docs/_build/
 
 # PyBuilder
+.pybuilder/
 target/
 
 # Jupyter Notebook
@@ -133,9 +133,6 @@ dmypy.json
 
 # pytype static type analyzer
 .pytype/
-.idea/
 
-# the rest
-.swp
-
-*DS_store
+# Cython debug symbols
+cython_debug/
