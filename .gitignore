@@ -25,7 +25,10 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+pip-wheel-metadata/
 MANIFEST
+.swp
+
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -135,7 +138,15 @@ dmypy.json
 .pytype/
 .idea/
 
+<<<<<<< Updated upstream
 # the rest
 .swp
 
 *DS_store
+=======
+# Cython debug symbols
+cython_debug/
+
+# pycharm
+.idea/
+>>>>>>> Stashed changes
