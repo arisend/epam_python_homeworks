@@ -14,14 +14,8 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
-
-      - name: Install dependencies with pipenv
-        run: |
-          pip install pipenv
-          pipenv install --deploy --dev
-
-      - run: pipenv run isort --recursive --diff
-      - run: pipenv run black --check .
-      - run: pipenv run flake8
-      - run: pipenv run mypy
-      - run: pipenv run pytest --cov --cov-fail-under=100
+      - run: run isort --recursive --diff
+      - run: run black --check .
+      - run: run flake8
+      - run: run mypy
+      - run: run pytest --cov --cov-fail-under=100
