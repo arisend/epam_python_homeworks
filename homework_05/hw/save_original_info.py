@@ -41,7 +41,6 @@ def print_result(func):
         result = func(*args, **kwargs)
         print(result)
         return result
-
     return wrapper
 
 
@@ -54,7 +53,6 @@ def custom_sum(*args):
 if __name__ == "__main__":
     custom_sum([1, 2, 3], [4, 5])
     custom_sum(1, 2, 3, 4)
-
     print(custom_sum.__doc__)
     print(custom_sum.__name__)
     without_print = custom_sum.__original_func
