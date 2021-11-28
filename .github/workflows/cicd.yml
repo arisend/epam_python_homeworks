@@ -1,21 +1,17 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
-
-on: [push, pull_request]
+name: Run isort
+on:
+  - push
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Setup Python
-        uses: actions/setup-python@v1
+      - uses: actions/setup-python@v2
         with:
-          python-version: 3.9
-      - run: isort --recursive --diff
-      - run: black --check .
-      - run: flake8
-      - run: mypy
-      - run: pytest --cov --cov-fail-under=100
+          python-version: 3.8
+      - uses: jamescurtin/isort-action@master
+        with:
+            requirementsFiles: "requirements.txt"
