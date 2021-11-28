@@ -41,7 +41,6 @@ def print_result(func):
         result = func(*args, **kwargs)
         print(result)
         return result
-
     return wrapper
 
 
