@@ -35,7 +35,6 @@ custom_sum
     sys.stdout = old_stdout  # Put the old stream back in place
     buffer.close()
 
-
 def test_negative_case():
     old_stdout = sys.stdout  # Memorize the default stdout stream
     sys.stdout = buffer = io.StringIO()
