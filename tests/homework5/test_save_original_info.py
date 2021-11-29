@@ -5,7 +5,7 @@ import functools
 import pytest
 import datetime
 
-from homework_05.hw.save_original_info import save_function_decorator, print_result, custom_sum
+from ...homework_05.hw.save_original_info import save_function_decorator, print_result, custom_sum
 
 custom_sum([1, 2, 3], [4, 5])
 custom_sum(1, 2, 3, 4)
