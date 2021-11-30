@@ -32,4 +32,4 @@ jobs:
         pytest
     - name: Isort
       run: |
-        isort --recursive --diff
+        isort .
