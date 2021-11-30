@@ -33,7 +33,6 @@ def save_function_decorator(function_to_save):
 
     return wrapper
 
-
 def print_result(func):
     @save_function_decorator(func)
     def wrapper(*args, **kwargs):
