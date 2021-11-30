@@ -2,7 +2,7 @@ import os
 import sys
 import pytest
 import datetime
-from oop_1 import Homework, Student, Teacher
+from ...homework_05 import Homework, Student, Teacher
 
 teacher = Teacher('Daniil', 'Shadrin')
 student = Student('Roman', 'Petrov')
