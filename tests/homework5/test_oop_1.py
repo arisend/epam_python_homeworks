@@ -4,6 +4,7 @@ import pytest
 import datetime
 from homework_05.hw.oop_1 import Homework, Student, Teacher
 
+
 teacher = Teacher('Daniil', 'Shadrin')
 student = Student('Roman', 'Petrov')
 teacher.last_name  # Daniil
