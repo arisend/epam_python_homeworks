@@ -52,6 +52,7 @@ class Homework:
     created - c точной датой и временем создания
     Методы:
     is_active - проверяет не истекло ли время на выполнение задания, возвращает boolean"""
+
     def __init__(self, text, days):
         self.text = text
         self.deadline = datetime.timedelta(days=days)
@@ -60,25 +61,29 @@ class Homework:
     def is_active(self):
         return self.created + self.deadline > datetime.datetime.now()
 
+
 class NotAHomeworkException(Exception):
     def __init__(self, message):
         self.message = message
+
     def __str__(self):
         return self.message
+
 
 class DeadlineError(Exception):
     def __init__(self, message):
         self.message = message
+
     def __str__(self):
         return self.message
 
 
 class HomeworkResult:
-    def __init__(self, student,homework, solution):
+    def __init__(self, student, homework, solution):
         if not isinstance(homework, Homework):
             raise NotAHomeworkException("You have a not Homework object")
         else:
-            self.homework=homework
+            self.homework = homework
         self.solution = solution
         self.author = student
         self.created = datetime.datetime.now()
@@ -97,17 +102,18 @@ class Student(Person):
     Методы:
     do_homework - принимает объект Homework и возвращает его же,
     если задание уже просрочено, то печатет 'You are late' и возвращает None"""
+
     def __init__(self, last_name, first_name):
         super().__init__(last_name, first_name)
 
-
-    def do_homework(self,Homework,text):
+    def do_homework(self, Homework, text):
         if not Homework.is_active():
             raise DeadlineError('You are late')
         else:
-            HWresult=HomeworkResult(self, Homework, text)
+            HWresult = HomeworkResult(self, Homework, text)
             Teacher.homework_done[Homework].append(HWresult)
             return HWresult
+
 
 class Teacher(Person):
     """Атрибуты:
@@ -118,20 +124,21 @@ class Teacher(Person):
     возвращает экземпляр Homework
     Обратите внимание, что для работы этого метода не требуется сам объект."""
     homework_done = defaultdict(list)
+
     def __init__(self, last_name, first_name):
         super().__init__(last_name, first_name)
 
-    def check_homework(self,HomeworkResult):
-        if len(HomeworkResult.solution) >5:
+    def check_homework(self, HomeworkResult):
+        if len(HomeworkResult.solution) > 5:
             Teacher.homework_done[Homework].append(HomeworkResult)
             return True
         else:
             return False
 
     @staticmethod
-    def reset_results( HomeworkResult=None):
-        if HomeworkResult!=None:
-            Teacher.homework_done[Homework]=[]
+    def reset_results(HomeworkResult=None):
+        if HomeworkResult is not None:
+            Teacher.homework_done[Homework] = []
         else:
             Teacher.homework_done = defaultdict(list)
 
@@ -163,11 +170,8 @@ if __name__ == '__main__':
     advanced_python_teacher.check_homework(result_1)
     temp_2 = Teacher.homework_done
     assert temp_1 == temp_2
-
     opp_teacher.check_homework(result_2)
     opp_teacher.check_homework(result_3)
 
     print(Teacher.homework_done[oop_hw])
-    print(Teacher.homework_done)
     Teacher.reset_results()
-    print(Teacher.homework_done)
