@@ -1,6 +1,4 @@
-import pytest
-
-from homework_06.hw.counter import instances_counter, User
+from homework_06.hw.counter import User
 
 
 def test_negative_case():

@@ -1,8 +1,6 @@
-import datetime
 from collections import defaultdict
-import pytest
 
-from homework_06.hw.oop_2 import Homework, NotAHomeworkException, DeadlineError, HomeworkResult, Person, Student, \
+from homework_06.hw.oop_2 import HomeworkResult, Student, \
     Teacher
 
 
@@ -42,8 +40,8 @@ def test_negative_case():
     result_1 = good_student.do_homework(oop_hw, 'I have done this hw')
     result_2 = good_student.do_homework(docs_hw, 'I have done this hw too')
     result_3 = lazy_student.do_homework(docs_hw, 'done')
-    assert opp_teacher.check_homework(result_2) != False
-    assert opp_teacher.check_homework(result_3) != True
-    assert isinstance(Teacher.homework_done[oop_hw][0], HomeworkResult) != False
+    assert opp_teacher.check_homework(result_2) is not False
+    assert opp_teacher.check_homework(result_3) is not True
+    assert isinstance(Teacher.homework_done[oop_hw][0], HomeworkResult) is not False
     Teacher.reset_results()
     assert Teacher.homework_done == defaultdict(list)
