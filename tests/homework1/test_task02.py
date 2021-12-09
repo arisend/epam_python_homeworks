@@ -5,7 +5,6 @@ from homework_01.hw.task02 import check_fibonacci
 def test_positive_case():
     """Testing correct seq"""
     assert check_fibonacci([0, 1, 1, 2, 3, 5, 8])
-    #assert check_fibonacci([-3, 2, -1, 1, 0, 1, 1, 2, 3, 5, 8])
 
 def test_negative_case():
     """Testing wrong seq"""
