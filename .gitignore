@@ -137,8 +137,14 @@ dmypy.json
 # pytype static type analyzer
 .pytype/
 
+<<<<<<< Updated upstream
 # Cython debug symbols
 cython_debug/
+=======
+# the rest
+.jovianrc 
+.swp
+>>>>>>> Stashed changes
 
 # pycharm
 .idea/
