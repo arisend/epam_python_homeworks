@@ -1,4 +1,3 @@
-import pytest
 from homework_01.hw.task02 import check_fibonacci
 
 

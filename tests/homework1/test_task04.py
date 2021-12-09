@@ -1,5 +1,3 @@
-import pytest
-
 from homework_01.hw.task04 import check_sum_of_four, check_sum_of_four2
 
 

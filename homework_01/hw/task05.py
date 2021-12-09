@@ -13,27 +13,25 @@ from typing import List
 
 
 def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
-    maxsum=None
-    list1=list(range(0, len(nums)))
+    maxsum = None
+    list1 = list(range(0, len(nums)))
     for i in list1:
         try:
-            listv=list1.copy()
+            listv = list1.copy()
             listv.remove(i)
             for j in listv:
                 try:
                     listv.remove(j)
                     for k in listv:
                         if maxsum == None:
-
                             maxsum = nums[i] + nums[j] + nums[k]
-                            #print('test',maxsum)
-                        if  maxsum<nums[i]+nums[j]+nums[k]:
-                            maxsum=nums[i]+nums[j]+nums[k]
-                            #print('test2n', maxsum)
+                        if maxsum < nums[i] + nums[j] + nums[k]:
+                            maxsum = nums[i] + nums[j] + nums[k]
                 except TypeError:
                     pass
         except TypeError:
             pass
     return maxsum
 
-print(find_maximal_subarray_sum([1, 3, -1, -3, 5, 3, 6, 7], k = 3))
+
+print(find_maximal_subarray_sum([1, 3, -1, -3, 5, 3, 6, 7], k=3))

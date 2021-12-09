@@ -26,15 +26,15 @@ def find_maximum_and_minimum(file_name: str) -> Tuple[int, int]:
     """
 
     with open(file_name) as fi:
-        maxval,minval=None,None
+        maxval, minval = None, None
 
         for line in fi:
-            intline=int(line)
+            intline = int(line)
             if not maxval and not minval:
-                maxval=intline
-                minval=intline
-            if maxval<intline:
-                maxval=intline
-            if minval>intline:
-                minval=intline
+                maxval = intline
+                minval = intline
+            if maxval < intline:
+                maxval = intline
+            if minval > intline:
+                minval = intline
         return minval, maxval
