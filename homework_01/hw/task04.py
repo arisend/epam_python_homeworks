@@ -12,10 +12,10 @@ from itertools import product
 
 def check_sum_of_four(a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
     counter = 0
-    for i, itema in enumerate(a):
-        for j, itemb in enumerate(b):
-            for k, itemc in enumerate(c):
-                for l, itemd in enumerate(d):
+    for itema in a:
+        for itemb in b:
+            for itemc in c:
+                for itemd in d:
                     if itema + itemb + itemc + itemd == 0:
                         counter += 1
     return counter
