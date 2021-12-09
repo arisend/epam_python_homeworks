@@ -23,7 +23,7 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
                 try:
                     listv.remove(j)
                     for k in listv:
-                        if maxsum == None:
+                        if maxsum is None:
                             maxsum = nums[i] + nums[j] + nums[k]
                         if maxsum < nums[i] + nums[j] + nums[k]:
                             maxsum = nums[i] + nums[j] + nums[k]
