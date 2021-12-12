@@ -16,7 +16,7 @@ assert = custom_range(string.ascii_lowercase, 'p', 'g', -2) == ['p', 'n', 'l', '
 """
 for i in range(0,1):
     pass
-import string
+
 def custom_range(data,start=None,stop=None,step=1):
     result=[]
     #print(start,stop)
@@ -41,9 +41,6 @@ def custom_range(data,start=None,stop=None,step=1):
                 result.append(item)
             elif (stop!=None and start==None and item<stop):
                 result.append(item)
-    print(result)
     return result
 
-assert  custom_range(string.ascii_lowercase, stop='g') == ['a', 'b', 'c', 'd', 'e', 'f']
-assert  custom_range(string.ascii_lowercase, 'g', 'p') == ['g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o']
-assert  custom_range(string.ascii_lowercase, 'p', 'g', -2) == ['p', 'n', 'l', 'j', 'h']
+

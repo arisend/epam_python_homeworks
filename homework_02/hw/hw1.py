@@ -10,8 +10,8 @@ import unicodedata
 from typing import List
 
 
-def read_file_generator(file_path: str, encoding='utf-8'):
-    for row in open(file_path, "r", encoding=encoding):
+def read_file_generator(file_path: str, encoding='utf-8',errors="ignore"):
+    for row in open(file_path, "r", encoding=encoding, errors=errors):
         yield row
 
 
@@ -45,7 +45,7 @@ def tokenize(open_file):
                 yield Token(kind='non_ascii_char', value=symbol)
 
 
-def get_longest_diverse_words(file_path: str, encoding="utf8") -> List[str]:
+def get_longest_diverse_words(file_path: str, encoding="utf8",errors="ignore") -> List[str]:
     """
         This function read file and iteraterate by rows and tokens. Then it calculates the metric of length plus qty of
          unique symbols for each of the founded words and finally returns 10 words with max metric.
@@ -55,7 +55,7 @@ def get_longest_diverse_words(file_path: str, encoding="utf8") -> List[str]:
     :rtype: list
     """
     lst = list()
-    for word in tokenize(read_file_generator(file_path, encoding=encoding)):
+    for word in tokenize(read_file_generator(file_path, encoding=encoding,errors=errors)):
         if word.kind != "word":
             continue
         if not lst or len(lst) < 10:
@@ -73,7 +73,7 @@ def get_longest_diverse_words(file_path: str, encoding="utf8") -> List[str]:
     return lst2
 
 
-def get_rarest_chars(file_path: str, encoding="utf8") -> list:
+def get_rarest_chars(file_path: str, encoding="utf8",errors="ignore") -> list:
     """
          This function read file and iteraterate by rows and tokens. Find rarest symbols for document.
      :param file_path:  Path to file for analysis
@@ -82,7 +82,7 @@ def get_rarest_chars(file_path: str, encoding="utf8") -> list:
      :rtype: list
      """
     dct = dict()
-    for symbol in tokenize(read_file_generator(file_path, encoding=encoding)):
+    for symbol in tokenize(read_file_generator(file_path, encoding=encoding,errors=errors)):
         if symbol.kind != "symbol":
             continue
         if symbol.value not in dct.keys():
@@ -102,7 +102,7 @@ def get_rarest_chars(file_path: str, encoding="utf8") -> list:
     return rarestlist
 
 
-def count_punctuation_chars(file_path: str, encoding="utf8") -> int:
+def count_punctuation_chars(file_path: str, encoding="utf8",errors="ignore") -> int:
     """
              Count every punctuation char.
          :param file_path:  Path to file for analysis
@@ -111,14 +111,14 @@ def count_punctuation_chars(file_path: str, encoding="utf8") -> int:
          :rtype: int
          """
     sum_punctuation = 0
-    for symbol in tokenize(read_file_generator(file_path, encoding=encoding)):
+    for symbol in tokenize(read_file_generator(file_path, encoding=encoding,errors=errors)):
         if symbol.kind != "punctuation":
             continue
         sum_punctuation += 1
     return sum_punctuation
 
 
-def count_non_ascii_chars(file_path: str, encoding="utf8") -> int:
+def count_non_ascii_chars(file_path: str, encoding="utf8",errors="ignore") -> int:
     """
              Count every non ascii char.
          :param file_path:  Path to file for analysis
@@ -127,14 +127,14 @@ def count_non_ascii_chars(file_path: str, encoding="utf8") -> int:
          :rtype: int
          """
     sum_non_ascii = 0
-    for symbol in tokenize(read_file_generator(file_path, encoding=encoding)):
+    for symbol in tokenize(read_file_generator(file_path, encoding=encoding,errors=errors)):
         if symbol.kind != "non_ascii_char":
             continue
         sum_non_ascii += 1
     return sum_non_ascii
 
 
-def get_most_common_non_ascii_char(file_path: str, encoding="utf8") -> str:
+def get_most_common_non_ascii_char(file_path: str, encoding="utf8",errors="ignore") -> str:
     """
              Return most common non ascii char.
          :param file_path:  Path to file for analysis
@@ -143,7 +143,7 @@ def get_most_common_non_ascii_char(file_path: str, encoding="utf8") -> str:
          :rtype: str
          """
     dct = dict()
-    for symbol in tokenize(read_file_generator(file_path, encoding=encoding)):
+    for symbol in tokenize(read_file_generator(file_path, encoding=encoding,errors=errors)):
         if symbol.kind != "non_ascii_char":
             continue
         if symbol.value not in dct.keys():

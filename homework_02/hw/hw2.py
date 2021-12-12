@@ -21,18 +21,25 @@ from typing import List, Tuple
 
 
 def major_and_minor_elem(inp: List) -> Tuple[int, int]:
-    inpset=set(inp)
-    minor = {'elem': None, 'count': len(inp)+1}
-    major = {'elem': None, 'count': 0}
-    for elem in inpset:
-        count=0
-        for el in inp:
-            if elem==el:
-                count+=1
-        if count>len(inp)//2 and count>major['count']:
-            major={'elem':elem,'count':count}
-        if count<minor['count']:
-            minor={'elem':elem,'count':count}
-    return (major['elem'],minor['elem'])
-print(major_and_minor_elem([3,2,3]))
-print(major_and_minor_elem([2,2,1,1,1,2,2]))
+    """
+    :param inp: list of integers
+    :return: tuple with most common and least common element.
+    """
+    dct={}
+    for elem in inp:
+        if elem not in dct.keys():
+            dct[elem] = 1
+        else:
+            dct[elem] = dct[elem] + 1
+    rarest = ''
+    rarestcount = dct[next(iter(dct))]
+    mostcommon = ''
+    commontcount = 0
+    for key, value in dct.items():
+        if rarestcount > value:
+            rarest = key
+            rarestcount = value
+        if commontcount < value:
+            mostcommon = key
+            commontcount = value
+    return mostcommon, rarest

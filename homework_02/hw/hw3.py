@@ -16,12 +16,50 @@ assert combinations([1, 2], [3, 4]) == [
 """
 from itertools import product
 from typing import List, Any
+import logging
 
+
+# root = logging.getLogger()
+# root.setLevel(logging.DEBUG)
+# handler = logging.StreamHandler(sys.stdout)
+# handler.setLevel(logging.DEBUG)
+# formatter = logging.Formatter('%(message)s')
+# handler.setFormatter(formatter)
+# root.addHandler(handler)
 
 def combinations(*args: List[Any]) -> List[List]:
-    ls=[*args].copy()
-    result=list(product(*ls))
-    print(result)
+    return list(product(*args))
+
+
+def prod(l, callcount):
+    callcount += 1
+    logging.debug("Entering function prod()")
+    logging.debug("Parameters:\nl: {}".format(l))
+    if len(l) == 1:
+        logging.debug("End of recursion reached, returning {}".format(l[0]))
+        return l[0]
+    result = []
+    if callcount == 1:
+        for e in prod(l[1:], callcount):
+            for i in l[0]:
+                result.append([i, *e])
+    else:
+        for e in prod(l[1:], callcount):
+            for i in l[0]:
+                result.append([i, e])
+    logging.debug("Returning {} , {}".format(result, callcount))
     return result
 
-combinations([1, 2], [3, 4], [5, 6])
+
+def combinations2(*args: List[Any]) -> List[List]:
+    result = prod(args, 0)
+    return result
+
+
+def combinations3(*args: List[Any]) -> List[List]:
+    pools = [tuple(pool) for pool in args]
+    logging.debug(pools)
+    result = [[]]
+    for pool in pools:
+        result = [x + [y] for x in result for y in pool]
+    return result
