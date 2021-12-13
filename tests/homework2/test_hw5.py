@@ -11,6 +11,4 @@ def test_positive_case():
 
 def test_negative_case():
     """Testing wrong seq"""
-    assert custom_range(string.ascii_lowercase, 'p', 'g', -2) != ['p','j', 'h']
-
-
+    assert custom_range(string.ascii_lowercase, 'p', 'g', -2) != ['p', 'j', 'h']

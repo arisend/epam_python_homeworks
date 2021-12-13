@@ -23,15 +23,15 @@ from functools import wraps
 
 
 def cache(func: Callable) -> Callable:
-    cache = []
+    caches = []
+
     @wraps(func)
-    def wrapper(args,kwargs):
-        for i, j in cache:
+    def wrapper(args, kwargs):
+        for i, j in caches:
             if i == (args, kwargs):
                 return j
         val = func(args, kwargs)
-        cache.append(((args, kwargs), val))
+        caches.append(((args, kwargs), val))
         return val
+
     return wrapper
-
-

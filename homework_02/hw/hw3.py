@@ -31,21 +31,21 @@ def combinations(*args: List[Any]) -> List[List]:
     return list(product(*args))
 
 
-def prod(l, callcount):
+def prod(lst, callcount):
     callcount += 1
     logging.debug("Entering function prod()")
-    logging.debug("Parameters:\nl: {}".format(l))
-    if len(l) == 1:
-        logging.debug("End of recursion reached, returning {}".format(l[0]))
-        return l[0]
+    logging.debug("Parameters:\nl: {}".format(lst))
+    if len(lst) == 1:
+        logging.debug("End of recursion reached, returning {}".format(lst[0]))
+        return lst[0]
     result = []
     if callcount == 1:
-        for e in prod(l[1:], callcount):
-            for i in l[0]:
+        for e in prod(lst[1:], callcount):
+            for i in lst[0]:
                 result.append([i, *e])
     else:
-        for e in prod(l[1:], callcount):
-            for i in l[0]:
+        for e in prod(lst[1:], callcount):
+            for i in lst[0]:
                 result.append([i, e])
     logging.debug("Returning {} , {}".format(result, callcount))
     return result

@@ -25,7 +25,7 @@ def major_and_minor_elem(inp: List) -> Tuple[int, int]:
     :param inp: list of integers
     :return: tuple with most common and least common element.
     """
-    dct={}
+    dct = {}
     for elem in inp:
         if elem not in dct.keys():
             dct[elem] = 1
