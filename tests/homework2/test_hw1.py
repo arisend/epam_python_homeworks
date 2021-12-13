@@ -1,6 +1,9 @@
+import os.path
+
 from homework_02.hw.hw1 import get_longest_diverse_words, get_rarest_chars, count_punctuation_chars, \
     count_non_ascii_chars, get_most_common_non_ascii_char
 
+os.path.join(os.path.dirname(__file__),'data.txt' )
 
 def test_positive_case():
     """Testing correct cases"""
