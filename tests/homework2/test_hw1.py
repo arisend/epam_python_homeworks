@@ -9,18 +9,18 @@ path_to_file = os.path.join(os.path.dirname(__file__), 'data.txt')
 def test_positive_case():
     """Testing correct cases"""
     assert get_longest_diverse_words(path_to_file, encoding='unicode-escape') == ['Souveränitätsansprüche',
-                                                                                'symbolischsakramentale',
-                                                                                'Verfassungsverletzungen',
-                                                                                'Mehrheitsvorstellungen',
-                                                                                'Werkstättenlandschaft',
-                                                                                'politischstrategischen',
-                                                                                'Werkstättenlandschaft',
-                                                                                'Bevölkerungsabschub',
-                                                                                'Wiederbelebungsübungen',
-                                                                                'Kollektivschuldiger']
+                                                                                  'symbolischsakramentale',
+                                                                                  'Verfassungsverletzungen',
+                                                                                  'Mehrheitsvorstellungen',
+                                                                                  'Werkstättenlandschaft',
+                                                                                  'politischstrategischen',
+                                                                                  'Werkstättenlandschaft',
+                                                                                  'Bevölkerungsabschub',
+                                                                                  'Wiederbelebungsübungen',
+                                                                                  'Kollektivschuldiger']
     assert get_rarest_chars(path_to_file, encoding='unicode-escape') == ['›', '‹', '’', '(', ')']
     assert count_punctuation_chars(path_to_file, encoding='unicode-escape') == 5475
-    assert count_non_ascii_chars(path_to_file, encoding='unicode-escape') == 2971
+    assert count_non_ascii_chars(path_to_file, encoding='unicode-escape') == 2972
     assert get_most_common_non_ascii_char(path_to_file, encoding='unicode-escape') == "ä"
 
 

@@ -91,7 +91,7 @@ def get_rarest_chars(file_path: str, encoding="utf8", errors="ignore") -> list:
             dct[symbol.value] = 1
         else:
             dct[symbol.value] = dct[symbol.value] + 1
-    rarest = ''
+
     rarestcount = dct[next(iter(dct))]
     for key, value in dct.items():
         if rarestcount > value:

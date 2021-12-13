@@ -20,6 +20,3 @@ def test_positive_case():
 def test_negative_case():
     """Testing wrong seq"""
     pass
-
-
-
