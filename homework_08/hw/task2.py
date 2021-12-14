@@ -57,7 +57,6 @@ class TableData:
             yield retdict
         self.conn.close()
 
-
     def __len__(self):
         self.conn = sqlite3.connect(self.database_name)
         self.cursor = self.conn.cursor()

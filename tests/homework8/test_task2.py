@@ -9,7 +9,7 @@ def test_positive_case():
     presidents = TableData(database_name=path_to_file, table_name="presidents")
     assert len(presidents) == 3
     assert presidents['Yeltsin'] == ('Yeltsin', 999, 'Russia')
-    assert ('Yeltsin' in presidents) == True
+    assert ('Yeltsin' in presidents) is True
     lst = []
     for president in presidents:
         lst.append(president['name'])
@@ -19,4 +19,4 @@ def test_positive_case():
 def test_negative_case():
     """Testing wrong cases"""
     presidents = TableData(database_name=path_to_file, table_name="presidents")
-    assert ('Putin' in presidents) != True
+    assert ('Putin' in presidents) is not True
