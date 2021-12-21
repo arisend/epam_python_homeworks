@@ -1,4 +1,5 @@
-from homework_09.hw.hw2 import context_manager_func,context_manager_class
+from homework_09.hw.hw2 import context_manager_func, context_manager_class
+
 
 def test_positive_case():
     """Testing correct cases"""

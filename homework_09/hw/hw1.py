@@ -42,6 +42,3 @@ def merge_sorted_files(file_list: List[Union[Path, str]]) -> Iterator:
         yield values_dict[min_it].rstrip('\n')
         if values_dict[min_it] != "END":
             values_dict[min_it] = None
-
-
-

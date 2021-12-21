@@ -7,12 +7,15 @@ with supressor(IndexError):
 import logging
 from contextlib import contextmanager
 
+
 @contextmanager
 def context_manager_func(exception):
     try:
         yield
     except exception:
         pass
+
+
 class context_manager_class:
     def __init__(self, exception):
         self.exception = exception
@@ -23,4 +26,3 @@ class context_manager_class:
     def __exit__(self, exc_type, exc_value, traceback):
         logging.debug("Exiting Context")
         return self.exception
-

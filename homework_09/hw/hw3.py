@@ -12,7 +12,6 @@ import logging
 from pathlib import Path
 from typing import Optional, Callable
 import os
-import importlib
 
 
 def universal_file_counter(dir_path: Path, file_extension: str, tokenizer: Optional[Callable] = None) -> int:
@@ -28,7 +27,3 @@ def universal_file_counter(dir_path: Path, file_extension: str, tokenizer: Optio
                         count += len(tokenizer(line))
 
     return count
-
-
-
-
