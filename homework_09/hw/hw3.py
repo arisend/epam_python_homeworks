@@ -8,25 +8,27 @@ For dir with two files from hw1.py:
 >>> universal_file_counter(test_dir, "txt", str.split)
 6
 """
+import logging
 from pathlib import Path
 from typing import Optional, Callable
 import os
 import importlib
 
+
 def universal_file_counter(dir_path: Path, file_extension: str, tokenizer: Optional[Callable] = None) -> int:
-    count=0
+    count = 0
     for file in os.listdir(path=dir_path):
         if file.endswith(file_extension):
-            print(file)
+            logging.debug(file)
             with open(os.path.join(dir_path, file), '+r') as f_open:
-               if not tokenizer:
-                    count+=len(f_open.readlines())
+                if not tokenizer:
+                    count += len(f_open.readlines())
                 else:
                     for line in f_open.readlines():
-                        count+=len(tokenizer(line))
+                        count += len(tokenizer(line))
 
     return count
 
-test_dir=r'C:\Users\KovalAl\PycharmProjects\testDIR'
-print(universal_file_counter(test_dir,'txt'))
-print(universal_file_counter(test_dir, "txt", str.split))
+
+
+

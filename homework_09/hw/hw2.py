@@ -4,6 +4,7 @@ Do it both ways: as a class and as a generator.
 with supressor(IndexError):
       [][2]
 """
+import logging
 from contextlib import contextmanager
 
 @contextmanager
@@ -17,14 +18,9 @@ class context_manager_class:
         self.exception = exception
 
     def __enter__(self):
-        print("Entering Context")
+        logging.debug("Entering Context")
 
     def __exit__(self, exc_type, exc_value, traceback):
-        print("Exiting Context")
+        logging.debug("Exiting Context")
         return self.exception
 
-with context_manager_class(IndexError):
-    [][2]
-
-with context_manager_func(IndexError):
-    [][2]

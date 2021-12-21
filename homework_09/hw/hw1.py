@@ -15,6 +15,12 @@ from typing import List, Union, Iterator
 
 
 def merge_sorted_files(file_list: List[Union[Path, str]]) -> Iterator:
+    """
+    Function that merges integer from sorted files and returns an iterator
+    :param file_list:
+    :return: Iterator with sorted values
+    """
+
     generators_list = []
     for file in file_list:
         file_open = open(file, 'r')
@@ -38,4 +44,4 @@ def merge_sorted_files(file_list: List[Union[Path, str]]) -> Iterator:
             values_dict[min_it] = None
 
 
-lst = list(merge_sorted_files(["file1.txt", "file2.txt"]))
+
