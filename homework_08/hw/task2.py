@@ -27,15 +27,19 @@ class TableData:
     def __contains__(self, value):
         self.conn = sqlite3.connect(self.database_name)
         self.cursor = self.conn.cursor()
-        self.cursor.execute("SELECT COUNT (*) FROM presidents where name=:name", {"name": value})
+        self.cursor.execute("SELECT COUNT (*) FROM {} where name=:name".format(TableData.scrub(self.table_name)), {"name": value})
         (ln,) = self.cursor.fetchall()[0]
         self.conn.close()
         return ln > 0
-
+    
+    @staticmethod
+    def scrub(table_name):
+        return ''.join( chr for chr in table_name if chr.isalnum() )
+    
     def __getitem__(self, item):
         self.conn = sqlite3.connect(self.database_name)
         self.cursor = self.conn.cursor()
-        self.cursor.execute('SELECT * from {} where name="{}"'.format(self.table_name, item))
+        self.cursor.execute("SELECT * from {} where name=:name".format(TableData.scrub(self.table_name))  , {"name": item})
         while row := self.cursor.fetchone():
             self.conn.close()
             return row
@@ -48,7 +52,7 @@ class TableData:
         """
         self.conn = sqlite3.connect(self.database_name)
         self.cursor = self.conn.cursor()
-        self.cursor.execute('SELECT * from {}'.format(self.table_name))
+        self.cursor.execute('SELECT * from {}'.format(TableData.scrub(self.table_name)))
         colnames = self.cursor.description
         while row := self.cursor.fetchone():
             retdict = {}
@@ -60,7 +64,7 @@ class TableData:
     def __len__(self):
         self.conn = sqlite3.connect(self.database_name)
         self.cursor = self.conn.cursor()
-        self.cursor.execute('SELECT COUNT (*) FROM {}'.format(self.table_name))
+        self.cursor.execute('SELECT COUNT (*) FROM {}'.format(TableData.scrub(self.table_name)))
         (ln,) = self.cursor.fetchall()[0]
         self.conn.close()
         return int(ln)
