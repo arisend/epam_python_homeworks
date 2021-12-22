@@ -8,8 +8,6 @@ import xml.etree.ElementTree as ET
 import time
 from concurrent.futures import ThreadPoolExecutor
 
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-
 
 class Parser_sp500:
     """
