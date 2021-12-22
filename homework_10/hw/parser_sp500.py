@@ -171,16 +171,14 @@ class Parser_sp500:
 
 if __name__ == '__main__':
     start_time = time.time()
-    # parser = Parser_sp500()
-    # with open('top_highest_price.json', 'w') as file:
-    #     json.dump(parser.top_highest_price, file)
-    # with open('top_lowest_pe.json', 'w') as file:
-    #     json.dump(parser.top_lowest_pe, file)
-    # with open('top_with_max_growth.json', 'w') as file:
-    #     json.dump(parser.top_with_max_growth, file)
-    # with open('top_highest_potential_profit.json', 'w') as file:
-    #     json.dump(parser.top_highest_potential_profit, file)
-
-
+    parser = Parser_sp500()
+    with open('top_highest_price.json', 'w') as file:
+        json.dump(parser.top_highest_price, file)
+    with open('top_lowest_pe.json', 'w') as file:
+        json.dump(parser.top_lowest_pe, file)
+    with open('top_with_max_growth.json', 'w') as file:
+        json.dump(parser.top_with_max_growth, file)
+    with open('top_highest_potential_profit.json', 'w') as file:
+        json.dump(parser.top_highest_potential_profit, file)
 
     logging.info("--- %s seconds ---" % (time.time() - start_time))
