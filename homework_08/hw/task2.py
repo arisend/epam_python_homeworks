@@ -27,7 +27,7 @@ class TableData:
     def __contains__(self, value):
         self.conn = sqlite3.connect(self.database_name)
         self.cursor = self.conn.cursor()
-        self.cursor.execute('SELECT COUNT (*) FROM {} where name="{}"'.format(self.table_name, value))
+        self.cursor.execute("SELECT COUNT (*) FROM :table where name=:name", {"table": self.table_name,"name": value})
         (ln,) = self.cursor.fetchall()[0]
         self.conn.close()
         return ln > 0
