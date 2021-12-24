@@ -3,6 +3,7 @@ import sys
 import io
 
 from homework_05.hw.save_original_info import save_function_decorator, print_result, custom_sum
+path_to_file_with_output = os.path.join(os.path.dirname(__file__), 'output.txt')
 
 def test_positive_case():
     """Testing correct case"""
