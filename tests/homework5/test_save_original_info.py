@@ -11,7 +11,7 @@ def test_positive_case():
     custom_sum(1, 2, 3, 4)
 
     with open(path_to_file_with_output, 'r') as f:
-        assert custom_sum.__doc__+ "\n" + custom_sum.__name__ == f.read()
+        assert custom_sum.__doc__+ "\n" + custom_sum.__name__ + "\n" == f.read()
 
 
 def test_negative_case():
