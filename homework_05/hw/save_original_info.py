@@ -19,18 +19,14 @@ print(custom_sum.__original_func)  # <function custom_sum at <some_id>>
 import functools
 
 
-def save_function_decorator(function_to_save):
-    def wrapper(*args, **kwargs):
-        "This is the wrapper function"
-        # print(function_to_save.__name__)
-        # print(function_to_save.__doc__)
-        function_to_save(*args, **kwargs)
-        result = function_to_save(*args, **kwargs)
-        result.__original_func = function_to_save
-        result.__name__ = function_to_save.__name__
-        result.__doc__ = function_to_save.__doc__
-        return result
+def save_function_decorator(source_function):
 
+    def wrapper(recipient_function):
+        "This is the wrapper function"
+        recipient_function.__original_func = source_function
+        recipient_function.__name__ = source_function.__name__
+        recipient_function.__doc__ = source_function.__doc__
+        return source_function(recipient_function)
     return wrapper
 
 def print_result(func):
