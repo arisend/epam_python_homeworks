@@ -14,9 +14,9 @@ class Parser_sp500:
     This class parses sp500 index data and store it inside self.parsed_data property.
     four self.methods allow to filter data base on predefined conditions.
     """
-    def __init__(self):
+    def parse(self):
         """
-        Init method starts parse circle
+        Method starts parse circle
         """
         url_list = []
         usd_rate = Parser_sp500.get_current_rate("USD")
@@ -153,16 +153,16 @@ class Parser_sp500:
             return list(one_page.values())
         else:
             raise ValueError
-
+    @property
     def top_highest_price(self):
         return {'data':sorted(self.parsed_data, key=lambda d: d['price'])[-10:]}
-
+    @property
     def top_lowest_pe(self):
         return {'data':sorted(self.parsed_data, key=lambda d: d['P/E'])[:10]}
-
+    @property
     def top_with_max_growth(self):
         return {'data':sorted(self.parsed_data, key=lambda d: d['growth'])[-10:]}
-
+    @property
     def top_highest_potential_profit(self):
         return {'data':sorted(self.parsed_data, key=lambda d: d['potential profit'])[-10:]}
 
