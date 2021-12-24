@@ -8,14 +8,15 @@ path_to_file3 = os.path.join(os.path.dirname(__file__), 'top_with_max_growth.jso
 path_to_file4 = os.path.join(os.path.dirname(__file__), 'top_highest_potential_profit.json')
 
 parser = Parser_sp500()
+parser.parse()
 with open(path_to_file1, 'w') as file:
-    json.dump(parser.top_highest_price(), file)
+    json.dump(parser.top_highest_price, file)
 with open(path_to_file2, 'w') as file:
-    json.dump(parser.top_lowest_pe(), file)
+    json.dump(parser.top_lowest_pe, file)
 with open(path_to_file3, 'w') as file:
-    json.dump(parser.top_with_max_growth(), file)
+    json.dump(parser.top_with_max_growth, file)
 with open(path_to_file4, 'w') as file:
-    json.dump(parser.top_highest_potential_profit(), file)
+    json.dump(parser.top_highest_potential_profit, file)
 
 
 def test_positive_case():
