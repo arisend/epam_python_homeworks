@@ -30,5 +30,3 @@ def make_filter(**keywords):
 
         filter_funcs.append(keyword_filter_func)
     return Filter(*filter_funcs)
-
-

@@ -1,6 +1,6 @@
 import os
 import pytest
-from homework_03.hw.task02.hw2 import calculate_sum, slow_calculate, SummingThread
+from homework_03.hw.task02.hw2 import calculate_sum
 
 path_to_file_with_output = os.path.join(os.path.dirname(__file__), 'hw2_output.txt')
 

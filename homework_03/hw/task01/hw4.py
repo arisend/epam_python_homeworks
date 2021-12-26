@@ -52,5 +52,3 @@ def cache(function: Callable, times) -> Callable:
             return val
 
     return wrapper
-
-

@@ -17,8 +17,6 @@ def test_positive_even():
                                          88, 90, 92, 94, 96, 98]
 
 
-
-
 def test_make_filter():
     """Testing make_filter"""
 

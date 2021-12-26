@@ -31,8 +31,8 @@ def test_negative_case(prepare_func):
     some = 100, 200
 
     val_1 = prepare_func(*some)
-    val_2 = prepare_func(*some)
-    val_3 = prepare_func(*some)
+    prepare_func(*some)
+    prepare_func(*some)
     val_4 = prepare_func(*some)
 
     assert val_1 is not val_4
