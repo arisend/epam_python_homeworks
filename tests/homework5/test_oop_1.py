@@ -1,5 +1,5 @@
 import pytest
-from homework_05.hw.oop_1 import Homework, Student, Teacher
+from homework_05.hw.oop_1 import Student, Teacher
 
 
 @pytest.fixture
