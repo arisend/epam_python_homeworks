@@ -27,43 +27,30 @@ Example::
 
 """
 from typing import Callable
-from functools import partial, wraps
+from functools import wraps
 
 
-def cache(func: Callable, times) -> Callable:
-    cache = {}
-    global attempnumber
-    attempnumber = 1
-    @wraps(func)
+def cache(function: Callable, times) -> Callable:
+    """
+    This function implement decorator which save result of called function first time in cache
+    and then return saved value specified qty of times.
+    :param function:
+    :param times:
+    :return: wrapper
+    """
+    cache_dict = {}
+
+    @wraps(function)
     def wrapper(*args):
-        global attempnumber
-        if args in cache and attempnumber < times:
-            attempnumber += 1
-            return cache[args]
+        if args in cache_dict and cache_dict[args][1] < times:
+            cache_dict[args][1] += 1
+            return cache_dict[args][0]
         else:
-            val = func(*args)
-            cache[args] = val
+            val = function(*args)
+            cache_dict[args] = [val, 1, function]
+
             return val
+
     return wrapper
 
 
-cache3 = partial(cache, times=3)
-
-
-@cache3
-def func(a, b):
-    print(a, b)
-    return (a ** b) ** 2
-
-
-cache_func = cache3(func)
-some = 100, 200
-
-val_1 = cache_func(*some)
-val_2 = cache_func(*some)
-val_3 = cache_func(*some)
-val_4 = cache_func(*some)
-
-assert val_1 is val_2
-assert val_1 is val_3
-assert val_1 is not val_4

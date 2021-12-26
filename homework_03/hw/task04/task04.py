@@ -19,9 +19,6 @@ Write a function that detects if a number is Armstrong number in functionaly sty
 
 from functools import reduce
 
+
 def is_armstrong(number: int) -> bool:
-    return number == reduce(lambda a, b: a + b, [pow(int(i),len(str(number))) for n,i in enumerate(str(number))])
-
-
-assert is_armstrong(153) is True, 'Is Armstrong number'
-assert is_armstrong(10) is False, 'Is not Armstrong number'
+    return number == reduce(lambda a, b: a + b, [pow(int(i), len(str(number))) for n, i in enumerate(str(number))])
