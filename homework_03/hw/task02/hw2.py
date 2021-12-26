@@ -50,7 +50,6 @@ class SummingThread(threading.Thread):
 
 def calculate_sum():
     start_time = time.time()
-
     start = 0
     qty_of_threads = 100
     step = 25
