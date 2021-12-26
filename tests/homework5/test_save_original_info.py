@@ -3,7 +3,9 @@ import sys
 import io
 
 from homework_05.hw.save_original_info import save_function_decorator, print_result, custom_sum
+
 path_to_file_with_output = os.path.join(os.path.dirname(__file__), 'output.txt')
+
 
 def test_positive_case():
     """Testing correct case"""
@@ -11,7 +13,7 @@ def test_positive_case():
     custom_sum(1, 2, 3, 4)
 
     with open(path_to_file_with_output, 'r') as f:
-        assert custom_sum.__doc__+ "\n" + custom_sum.__name__ + "\n" == f.read()
+        assert custom_sum.__doc__ + "\n" + custom_sum.__name__ + "\n" == f.read()
 
 
 def test_negative_case():

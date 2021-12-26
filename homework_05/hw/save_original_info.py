@@ -20,14 +20,15 @@ import functools
 
 
 def save_function_decorator(source_function):
-
     def wrapper(recipient_function):
         "This is the wrapper function"
         recipient_function.__original_func = source_function
         recipient_function.__name__ = source_function.__name__
         recipient_function.__doc__ = source_function.__doc__
         return source_function(recipient_function)
+
     return wrapper
+
 
 def print_result(func):
     @save_function_decorator(func)
@@ -36,6 +37,7 @@ def print_result(func):
         result = func(*args, **kwargs)
         print(result)
         return result
+
     return wrapper
 
 

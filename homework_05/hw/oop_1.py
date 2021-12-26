@@ -39,6 +39,7 @@ PEP8 соблюдать строго.
 """
 import datetime
 
+
 class Homework:
     """Homework принимает на вход 2 атрибута: текст задания и количество дней на это задание
     Атрибуты:
@@ -47,6 +48,7 @@ class Homework:
     created - c точной датой и временем создания
     Методы:
     is_active - проверяет не истекло ли время на выполнение задания, возвращает boolean"""
+
     def __init__(self, text, days):
         self.text = text
         self.deadline = datetime.timedelta(days=days)
@@ -55,6 +57,7 @@ class Homework:
     def is_active(self):
         return self.created + self.deadline > datetime.datetime.now()
 
+
 class Student:
     """Атрибуты:
     last_name
@@ -62,6 +65,7 @@ class Student:
     Методы:
     do_homework - принимает объект Homework и возвращает его же,
     если задание уже просрочено, то печатет 'You are late' и возвращает None"""
+
     def __init__(self, last_name, first_name):
         self.last_name = last_name
         self.first_name = first_name
@@ -74,6 +78,7 @@ class Student:
         else:
             return homework
 
+
 class Teacher:
     """Атрибуты:
     last_name
@@ -82,6 +87,7 @@ class Teacher:
     create_homework - текст задания и количество дней на это задание,
     возвращает экземпляр Homework
     Обратите внимание, что для работы этого метода не требуется сам объект."""
+
     def __init__(self, last_name, first_name):
         self.last_name = last_name
         self.first_name = first_name
@@ -89,6 +95,7 @@ class Teacher:
     @staticmethod
     def create_homework(text, days):
         return Homework(text, days)
+
 
 if __name__ == '__main__':
     teacher = Teacher('Daniil', 'Shadrin')
