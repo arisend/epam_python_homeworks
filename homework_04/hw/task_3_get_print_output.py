@@ -25,11 +25,9 @@ import sys
 
 
 def my_precious_logger(text: str):
-    if text[:5]=='error':
+    if text[:5] == 'error':
         stderr_fileno = sys.stderr
-        stderr_fileno.write(text+'\n')
+        stderr_fileno.write(text + '\n')
     else:
         stdout_fileno = sys.stdout
-        stdout_fileno.write(text+'\n')
-my_precious_logger("error: file not found")
-my_precious_logger("OK")
+        stdout_fileno.write(text + '\n')

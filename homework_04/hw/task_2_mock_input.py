@@ -31,15 +31,10 @@ import urllib.request
 
 def count_dots_on_i(url: str) -> int:
     with urllib.request.urlopen(url) as conn:
-        #print('test1',conn)
-        responsestr=conn.read().decode()
-        #print('test2',responsestr)
-        counti=0
-        for s in responsestr:
-            if s=='i':
-                counti+=1
+        response_str = conn.read().decode()
+        count_i = 0
+        for s in response_str:
+            if s == 'i':
+                count_i += 1
 
-    return counti
-print(count_dots_on_i('https://ya.ru/'))
-
-
+    return count_i

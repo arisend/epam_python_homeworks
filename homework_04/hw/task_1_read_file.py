@@ -31,8 +31,8 @@ You will learn:
 def read_magic_number(path: str) -> bool:
     with open(path, "r+") as ouf:
         file_data = ouf.readlines()
-        first_line=file_data[0]
+        first_line = file_data[0]
         try:
-            return first_line.strip().isnumeric() and float(first_line.strip())>=1 and float(first_line.strip())<3
-        except:
+            return first_line.strip().isnumeric() and 1 <= float(first_line.strip()) < 3
+        except BaseException:
             raise ValueError
