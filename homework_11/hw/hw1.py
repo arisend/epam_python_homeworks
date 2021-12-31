@@ -24,6 +24,9 @@ assert SizesEnum.XL == "XL"
 
 
 class SimplifiedEnum(type):
+    """
+    This class implement metaclass which will set __keys value of it's children's as attributes
+    """
     def __new__(cls, name, bases, dct):
         x = super().__new__(cls, name, bases, dct)
         for attr in dct["_" + name + "__keys"]:

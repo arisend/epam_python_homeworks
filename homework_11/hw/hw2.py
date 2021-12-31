@@ -31,9 +31,9 @@ class Order:
     @property
     def strategy(self) -> Strategy:
         """
-        Контекст хранит ссылку на один из объектов Стратегии. Контекст не знает
-        конкретного класса стратегии. Он должен работать со всеми стратегиями
-        через интерфейс Стратегии.
+        The context stores a link to one of the Strategy objects. The context doesn't know
+        specific class of strategy. It must work with all strategies
+        through the Strategy interface.
         """
 
         return self._strategy
@@ -44,11 +44,11 @@ class Order:
 
 class Strategy(ABC):
     """
-    Интерфейс Стратегии объявляет операции, общие для всех поддерживаемых версий
-    некоторого алгоритма.
+    The Strategy interface declares operations common to all supported versions
+    some algorithm.
 
-    Контекст использует этот интерфейс для вызова алгоритма, определённого
-    Конкретными Стратегиями.
+    The context uses this interface to invoke the algorithm defined by
+    Specific Strategies.
     """
 
     @abstractmethod
