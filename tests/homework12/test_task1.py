@@ -19,7 +19,7 @@ sys.path.append(DJANGO_DIR)
 
 
 
-
+#    Will try to complete in nearest future
 # def test_migrations() -> None:
 #     with open(DJANGO_DIR + '/test_main.db', 'w'): pass
 #     dbs = {
@@ -81,28 +81,6 @@ def test_report():
     assert ['Lev Sokolov', datetime.datetime(2022, 1, 11, 4, 49, 25, 638826), 'Daniil Shadrin'] in result
 
 
-# @pytest.yield_fixture(scope='session')
-# def django_db_setup(django_db_blocker):
-#     from django.conf import settings
-#     settings.DATABASES['default']['NAME'] = 'test_db'
-#     with open('/tmp/test_main.db', 'w'): pass
-#
-#     with django_db_blocker.unblock():
-#         call_command('makemigrations', 'school')
-#         call_command('migrate', '--noinput')
-#         call_command('dumpdata > test.json')
-#     yield
-#     for connection in connections.all():
-#         connection.close()
-#     os.remove("test.json")
-#
-#
-# def test_migrations(django_db_setup):
-#     """Testing migrations sequence """
-#     django_db_setup()
-#     with open('initial_data.json', 'w') as initial_data_file:
-#         with open('test.json', 'w') as test_file:
-#             assert json.load(initial_data_file) == json.load(test_file)
 
 
 
