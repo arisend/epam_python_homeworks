@@ -1,0 +1,2 @@
+This function can sum any objects which have __add___
+custom_sum
