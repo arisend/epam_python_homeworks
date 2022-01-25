@@ -4,3 +4,8 @@ jupyter
 rise
 aiohttp
 django
+pytest-django
+wwo_hist
+numpy
+pandas
+datetime

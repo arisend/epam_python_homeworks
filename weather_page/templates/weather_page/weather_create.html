@@ -202,7 +202,7 @@
    <body>
       {% load static %}
       <div class='cont'>
-         <h1 align='center'>SIMPLE WHEATHER HISTORY ANALYSIS</h1>
+         <h1 align='center'>SIMPLE WEATHER HISTORY ANALYSIS</h1>
          {% block content %}
          <form method="POST">
             {% csrf_token %}
@@ -276,6 +276,7 @@
             {% endif %}
             {% if wrong_dates %}
             Pls recheck dates: end date can't be earlier then start date.
+            {% else %}
             {% endif %}
          </div>
       </div>
