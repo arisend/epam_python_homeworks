@@ -4,3 +4,4 @@ jupyter
 rise
 aiohttp
 django
+wwo_hist
