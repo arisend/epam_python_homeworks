@@ -5,7 +5,7 @@ from datetime import date
 import pandas as pd
 import numpy as np
 import sys
-
+from django.db.models import Value,Max
 
 def sum_two_angles(first_angle, second_angle):
     """This auxiliary function sums two angles specified in degrees"""
@@ -37,7 +37,12 @@ def get_data_from_db_and_analyze(location, start, end):
     resultdict['avereg'] = round((df['maxtempC'].mean() + df['mintempC'].mean()) / 2, 2)
 
     df['date_time_obj'] = pd.to_datetime(df['date_time'])
-
+    lastdaytemp = WWOnlineTable.objects.filter(location=location).order_by('-date_time')[:1].get()
+    avglastdaytemp=(lastdaytemp.maxtempC+lastdaytemp.mintempC)/2
+    df['avgday']=(df['maxtempC']+df['mintempC'])/2
+    idx = df['avgday'].sub(avglastdaytemp).abs().idxmin()
+    closeday=df.loc[idx]
+    resultdict['closestday'] = str(closeday['date_time']) + " Max °C: " + str(closeday['maxtempC'])  + ", Min °C: " + str(closeday['mintempC'])
     if (end - start).days > 730:
         dfyearaverages = df[['maxtempC', 'mintempC', 'date_time_obj']].groupby(
             pd.Grouper(key='date_time_obj', freq='Y')).mean().round(2)
@@ -70,6 +75,17 @@ def get_data_from_db_and_analyze(location, start, end):
         if weather_tag != '':
             resultdict['weather_tag'] = weather_tag
             break
+    max_date_time = (
+        WWOnlineTable.objects
+            .filter(location=location)
+            .annotate(common=Value(1))
+            .values('common')
+            .annotate(max_date_time=Max('date_time'))
+            .values('max_date_time')
+    )
+
+
+
     return resultdict
 
 

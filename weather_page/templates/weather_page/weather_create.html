@@ -252,6 +252,7 @@
                <p style="text-align: center;">Most common precipitation: {{ type_of_precipitation}}</p>
                <p style="text-align: center;"> Avg wind speed: {{avgwindspeed}}  <img src="{% static 'src/pictures/flag.png' %}"  width="23" height="23">Prevailing wind direction: {{sum_angle}} <img src="{% static 'src/pictures/direction.png' %}" width="25" height="25" style="transform:rotate({{sum_angle}}deg);"></p>
                <p style="text-align: center;">Prevailing weather: {{weather_tag}}</p>
+               <p style="text-align: center;">Day with most closest to today's weather: {{closestday}}</p>
             </ul>
             {% if dfyearaverages %}
             <table id="pastyears" style="margin-left: auto; margin-right: auto;">
